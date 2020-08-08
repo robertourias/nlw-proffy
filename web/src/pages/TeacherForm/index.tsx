@@ -1,7 +1,8 @@
 import React, { useState, FormEvent } from 'react';
-import PageHeader from '../../components/PageHeader';
+import { useHistory } from 'react-router-dom';
 
 import api from '../../services/api';
+import PageHeader from '../../components/PageHeader';
 import './styles.css';
 import Input from '../../components/Input';
 import Textarea from '../../components/Textarea';
@@ -10,6 +11,7 @@ import Select from '../../components/Select';
 import warningIcon from '../../assets/images/icons/warning.svg';
 
 function TeacherForm() {
+    const history = useHistory();
     const [name, setName] = useState('');
     const [avatar, setAvatar] = useState('');
     const [whatsapp, setWhatsapp] = useState('');
@@ -53,6 +55,7 @@ function TeacherForm() {
             schedule: scheduleItems
         }).then(() => {
             alert("Cadastro realizado com sucesso");
+            history.push('/');
         }).catch((err) => {
             alert("Erro no cadastro")
         });
